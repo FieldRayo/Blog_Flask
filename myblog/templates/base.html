@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}--MyBlog</title>
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <div>
+        <a href="">
+          <h1>MyBlog</h1>
+        </a>
+      </div>
+      <nav>
+        <a href="">Registrar Usuario</a>
+        <a href="">Iniciar Sesion</a>
+      </nav>
+    </header>
+
+    <section>
+      <header>{% block header %}{% endblock %}</header>
+      {% block content %}{% endblock %}
+    </section>
+  </body>
+</html>
