@@ -3,13 +3,12 @@ from myblog import db
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    user_name = db.Column(db.String(50))
+    username = db.Column(db.String(50))
     password = db.Column(db.Text)
 
     def __init__(self, username, password) -> None:
         self.username = username
         self.password = password
 
-    def __rep__(self) -> str:
+    def __repr__(self) -> str:
         return f'User: {self.username}'
-

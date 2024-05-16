@@ -2,7 +2,7 @@ from myblog import db
 from datetime import datetime
 
 class User(db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     author = db.Column(db.Integer, db.ForeigKey('users.id'), nullable=False)
     title = db.Column(db.String(100))
