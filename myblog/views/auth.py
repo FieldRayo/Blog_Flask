@@ -21,7 +21,7 @@ def register():
         error = ''
         if not username:
             error = 'Se requiere nombre de usuario'
-        if not password:
+        elif password:
             error = 'se requiere una contraseña'
 
         user_name = User.query.filter_by(username = username).first()
@@ -35,3 +35,27 @@ def register():
         flash(error)
 
     return render_template('auth/register.html')
+
+@auth.route('/login', methods=('GET', 'POST'))
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+    
+
+        error = ''
+        user = User.query.filter_by(username = username).first()
+        if not user:
+            error = 'Nombre de usuario incorrecto'
+        elif not check_password_hash(user.password, password):
+            error = 'Constraseña incorrecta'
+
+
+        if not error:
+            session.clear()
+            session['user_id'] = user.id
+            #return redirect(url_for('index'))
+
+        flash(error)
+
+    return render_template('auth/login.html')
